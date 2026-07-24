@@ -4,7 +4,7 @@
   top: 0; left: 0;
   width: 100vw; height: 100vh;
   /* Solid plum background to completely hide the website underneath */
-  background: var(--plum); 
+  background: var(--cream); 
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   z-index: 9999;
@@ -133,7 +133,7 @@
 .letter-text {
   font-family: var(--font-display);
   font-size: 2.5rem;
-  color: var(--plum);
+  color: #3e2436;
   text-align: center;
   opacity: 0;
   transition: opacity 0.6s ease 1.2s;
@@ -145,7 +145,7 @@
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.25em;
-  color: var(--rose-deep);
+  color: #a95c80;
   margin-top: 0.8rem;
   opacity: 0;
   transition: opacity 0.6s ease 1.5s;
