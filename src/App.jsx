@@ -273,24 +273,36 @@ export default function App() {
             here. Here are a few we hold close to our hearts.
           </p>
           <Carousel items={MEMORIES} />
+          <div className="scroll-indicator" aria-hidden="true">
+            <FiChevronDown />
+          </div>
         </section>
 
         {/* Slide 2: CEREMONY */}
         <section className="section band">
           <SectionHeading eyebrow="Please Join Us" title="Wedding Ceremony" />
           <LocationCard icon={GiChurch} {...CEREMONY} />
+          <div className="scroll-indicator" aria-hidden="true">
+            <FiChevronDown />
+          </div>
         </section>
 
         {/* Slide 3: RECEPTION */}
         <section className="section">
           <SectionHeading eyebrow="Let's Celebrate" title="Wedding Reception" />
           <LocationCard icon={GiPartyPopper} {...RECEPTION} />
+          <div className="scroll-indicator" aria-hidden="true">
+            <FiChevronDown />
+          </div>
         </section>
 
         {/* Slide 4: TIMELINE */}
         <section className="section band">
           <SectionHeading eyebrow="The Full Schedule" title="Order of the Day" />
           <Timeline items={TIMELINE} />
+          <div className="scroll-indicator" aria-hidden="true">
+            <FiChevronDown />
+          </div>
         </section>
 
         {/* Slide 5: GUESTBOOK */}

@@ -53,7 +53,7 @@ export default function Guestbook() {
             <input
               id="guestName"
               type="text"
-              placeholder="e.g. John & Jane Doe"
+              placeholder=""
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               required
