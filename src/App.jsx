@@ -131,6 +131,16 @@ export default function App() {
     // Ignore horizontal trackpad scrolls so carousel doesn't trigger vertical slide
     if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
 
+    // Allow scrolling within tall sections
+    const target = e.target.closest('.section, .hero, .footer');
+    if (target) {
+      const { scrollTop, scrollHeight, clientHeight } = target;
+      if (scrollHeight > clientHeight + 2) {
+        if (e.deltaY > 0 && scrollTop + clientHeight < scrollHeight - 1) return;
+        if (e.deltaY < 0 && scrollTop > 1) return;
+      }
+    }
+
     if (e.deltaY > 15) {
       if (activeScreen < numScreens - 1) {
         isScrolling.current = true;
@@ -146,9 +156,16 @@ export default function App() {
     }
   };
 
+  const touchStartScrollTop = useRef(0);
   const handleTouchStart = (e) => {
     touchStartY.current = e.touches[0].clientY;
     touchStartX.current = e.touches[0].clientX;
+    const target = e.target.closest('.section, .hero, .footer');
+    if (target) {
+      touchStartScrollTop.current = target.scrollTop;
+    } else {
+      touchStartScrollTop.current = 0;
+    }
   };
 
   const handleTouchEnd = (e) => {
@@ -159,6 +176,16 @@ export default function App() {
     const diffX = touchStartX.current - touchEndX;
 
     if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 40) {
+      // Allow scrolling within tall sections
+      const target = e.target.closest('.section, .hero, .footer');
+      if (target) {
+        const { scrollHeight, clientHeight } = target;
+        if (scrollHeight > clientHeight + 2) {
+          if (diffY > 0 && touchStartScrollTop.current + clientHeight < scrollHeight - 1) return; // Swiping up (scrolling down)
+          if (diffY < 0 && touchStartScrollTop.current > 1) return; // Swiping down (scrolling up)
+        }
+      }
+
       if (diffY > 0 && activeScreen < numScreens - 1) {
         isScrolling.current = true;
         setActiveScreen(s => s + 1);

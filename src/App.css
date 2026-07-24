@@ -72,12 +72,19 @@ a {
   max-width: var(--max-w);
   margin: 0 auto;
   padding: 5rem 1.5rem;
-  min-height: 100svh;
+  height: 100dvh;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+}
+
+.section::before,
+.section::after {
+  content: "";
+  margin: auto;
 }
 
 .section.band {
@@ -119,16 +126,23 @@ a {
 
 .hero {
   position: relative;
-  min-height: 100svh;
+  height: 100dvh;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 3rem 1.5rem 4rem;
   background: radial-gradient(circle at 50% 0%, var(--blush) 0%, var(--cream) 62%);
   text-align: center;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  margin: auto;
 }
 
 .hero__frame {
@@ -510,10 +524,17 @@ a {
   font-family: var(--font-display);
   font-size: 1.3rem;
   color: var(--plum);
-  min-height: 100svh;
+  height: 100dvh;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+}
+
+.footer::before,
+.footer::after {
+  content: "";
+  margin: auto;
 }
 
 .footer__sub {
