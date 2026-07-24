@@ -44,21 +44,26 @@ export default function BackgroundEffect() {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 0.5;
+        this.size = Math.random() * 2.5 + 0.8;
         this.baseX = this.x;
         this.baseY = this.y;
         this.density = Math.random() * 20 + 1;
         this.speedY = Math.random() * -0.5 - 0.1;
         this.speedX = (Math.random() - 0.5) * 0.3;
-        this.opacity = Math.random() * 0.6 + 0.1;
+        this.opacity = Math.random() * 0.8 + 0.3;
       }
 
       draw() {
-        ctx.fillStyle = `rgba(207, 170, 118, ${this.opacity})`; // Gold color matching --gold
+        ctx.fillStyle = `rgba(255, 240, 210, ${this.opacity})`; // Brighter starlight gold
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = `rgba(255, 240, 210, ${this.opacity})`;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.closePath();
         ctx.fill();
+        
+        // Reset shadow for performance if needed, but since all are stars, keeping it is fine
+        ctx.shadowBlur = 0;
       }
 
       update() {
