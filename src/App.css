@@ -89,7 +89,7 @@ a {
 
 .section.band {
   max-width: none;
-  background: var(--blush);
+  background: color-mix(in srgb, var(--blush) 40%, transparent);
 }
 
 .section.band > * {
@@ -133,7 +133,7 @@ a {
   align-items: center;
   justify-content: flex-start;
   padding: 3rem 1.5rem 4rem;
-  background: radial-gradient(circle at 50% 0%, var(--blush) 0%, var(--cream) 62%);
+  background: radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--blush) 50%, transparent) 0%, transparent 62%);
   text-align: center;
   scroll-snap-align: start;
   scroll-snap-stop: always;
