@@ -8,11 +8,17 @@ export default function AddToCalendar({ event, label = "Add to Calendar" }) {
   const ref = useRef(null);
 
   useEffect(() => {
-    function onClick(e) {
-      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    function onClickOutside(e) {
+      if (ref.current && !ref.current.contains(e.target)) {
+        setOpen(false);
+      }
     }
-    document.addEventListener("mousedown", onClick);
-    return () => document.removeEventListener("mousedown", onClick);
+    document.addEventListener("mousedown", onClickOutside);
+    document.addEventListener("touchstart", onClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", onClickOutside);
+      document.removeEventListener("touchstart", onClickOutside);
+    };
   }, []);
 
   return (
@@ -20,7 +26,11 @@ export default function AddToCalendar({ event, label = "Add to Calendar" }) {
       <button
         type="button"
         className="btn-outline"
-        onClick={() => setOpen((v) => !v)}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setOpen((v) => !v);
+        }}
         aria-haspopup="true"
         aria-expanded={open}
       >
@@ -32,7 +42,9 @@ export default function AddToCalendar({ event, label = "Add to Calendar" }) {
           <button
             type="button"
             role="menuitem"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
               downloadICS(event);
               setOpen(false);
             }}
@@ -47,8 +59,11 @@ export default function AddToCalendar({ event, label = "Add to Calendar" }) {
             role="menuitem"
             href={googleCalendarUrl(event)}
             target="_blank"
-            rel="noreferrer"
-            onClick={() => setOpen(false)}
+            rel="noopener noreferrer"
+            onClick={(e) => {
+              e.stopPropagation();
+              setOpen(false);
+            }}
           >
             <FaGoogle aria-hidden="true" />
             <span>Google / Android</span>
