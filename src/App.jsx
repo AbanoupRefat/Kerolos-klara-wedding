@@ -19,6 +19,7 @@ import Timeline from "./components/Timeline";
 import Carousel from "./components/Carousel";
 import Envelope from "./components/Envelope";
 import BackgroundEffect from "./components/BackgroundEffect";
+import Guestbook from "./components/Guestbook";
 import "./App.css";
 
 // ---- Editable wedding details -------------------------------------------
@@ -96,7 +97,7 @@ function SectionHeading({ eyebrow, title }) {
 export default function App() {
   const [invitationOpened, setInvitationOpened] = useState(false);
   const [activeScreen, setActiveScreen] = useState(0);
-  const numScreens = 6;
+  const numScreens = 7;
   const isScrolling = useRef(false);
   const touchStartY = useRef(0);
   const touchStartX = useRef(0);
@@ -259,7 +260,7 @@ export default function App() {
             <p className="hero__date">November 22, 2026</p>
             <Countdown target={WEDDING_DATE} />
           </div>
-          <div className="hero__scroll" aria-hidden="true">
+          <div className="scroll-indicator" aria-hidden="true">
             <FiChevronDown />
           </div>
         </section>
@@ -292,7 +293,19 @@ export default function App() {
           <Timeline items={TIMELINE} />
         </section>
 
-        {/* Slide 5: FOOTER */}
+        {/* Slide 5: GUESTBOOK */}
+        <section className="section">
+          <SectionHeading eyebrow="Leave a message" title="Guestbook" />
+          <p className="section-intro">
+            We would love to hear from you before our big day!
+          </p>
+          <Guestbook />
+          <div className="scroll-indicator" aria-hidden="true">
+            <FiChevronDown />
+          </div>
+        </section>
+
+        {/* Slide 6: FOOTER */}
         <footer className="footer">
           <p>With love, {COUPLE.groom} &amp; {COUPLE.bride}</p>
           <p className="footer__sub">We can't wait to celebrate with you.</p>

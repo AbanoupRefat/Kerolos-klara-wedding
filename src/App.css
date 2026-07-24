@@ -69,6 +69,7 @@ a {
 }
 
 .section {
+  position: relative;
   max-width: var(--max-w);
   margin: 0 auto;
   padding: 5rem 1.5rem;
@@ -244,12 +245,15 @@ a {
   margin-top: 0.5rem;
 }
 
-.hero__scroll {
+.scroll-indicator {
   position: absolute;
   bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 1.4rem;
   color: var(--rose);
   animation: bob 2.2s ease-in-out infinite;
+  pointer-events: none;
 }
 
 @keyframes bob {
