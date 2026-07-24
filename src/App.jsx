@@ -18,6 +18,7 @@ import LocationCard from "./components/LocationCard";
 import Timeline from "./components/Timeline";
 import Carousel from "./components/Carousel";
 import Envelope from "./components/Envelope";
+import BackgroundEffect from "./components/BackgroundEffect";
 import "./App.css";
 
 // ---- Editable wedding details -------------------------------------------
@@ -226,6 +227,7 @@ export default function App() {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
+      <BackgroundEffect />
       <audio 
         ref={audioRef} 
         src="/lana_song.mp4" 
