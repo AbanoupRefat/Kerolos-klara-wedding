@@ -64,7 +64,13 @@ const TIMELINE = [
   { time: "3:30 PM", title: "Guests Arrive at Church", icon: LuUsers },
   { time: "4:00 PM", title: "Wedding Ceremony", icon: GiChurch },
   { time: "4:45 PM", title: "Rings & Vows Exchange", icon: GiRing },
+  { time: "5:30 PM", title: "Photos with Family & Friends", icon: LuCamera },
   { time: "7:00 PM", title: "Guests Arrive at Hotel", icon: LuUsers },
+  { time: "7:30 PM", title: "Reception Begins", icon: PiChampagneBold },
+  { time: "8:00 PM", title: "Dinner is Served", icon: LuUtensils },
+  { time: "9:30 PM", title: "First Dance & Party", icon: LuMusic4 },
+  { time: "11:00 PM", title: "Cake Cutting", icon: GiCakeSlice },
+  { time: "12:00 AM", title: "Send-Off", icon: GiCarWheel },
 ];
 
 const MEMORIES = [
