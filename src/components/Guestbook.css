@@ -121,9 +121,24 @@
 }
 
 .shake-text {
-  text-align: center;
-  font-weight: bold;
   animation: fadeIn 0.3s ease;
-  color: #ff6b6b;
-  margin-bottom: -0.5rem;
+}
+
+.cute-prompt {
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--rose-deep);
+  margin: 0 0 -0.5rem;
+  line-height: 1.4;
+}
+
+.cute-prompt .skip-hint {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-style: normal;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+  color: var(--plum-soft);
 }

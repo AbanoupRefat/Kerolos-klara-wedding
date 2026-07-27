@@ -51,7 +51,7 @@ export default function Guestbook({ shakeError, onSuccess }) {
       ) : (
         <form className={`guestbook-form ${shakeError ? 'shake' : ''}`} onSubmit={handleSubmit}>
           {shakeError && (
-            <p className="form-error shake-text">Please leave us a message before you go! (Scroll again to skip)</p>
+            <p className="cute-prompt shake-text">Aww, leaving so soon? We'd love a little note from you! 💌<br/><span className="skip-hint">(Scroll again to skip)</span></p>
           )}
           <div className="form-group">
             <label htmlFor="guestName">Your Name</label>
