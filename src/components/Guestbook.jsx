@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FiSend } from "react-icons/fi";
 import "./Guestbook.css";
 
-export default function Guestbook() {
+export default function Guestbook({ shakeError, onSuccess }) {
   const [formData, setFormData] = useState({ name: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle, loading, success, error
 
@@ -19,6 +19,7 @@ export default function Guestbook() {
         // Simulate a network request for now if the URL is not set
         await new Promise(resolve => setTimeout(resolve, 1500));
         setStatus("success");
+        if (onSuccess) onSuccess();
         return;
       }
 
@@ -33,6 +34,7 @@ export default function Guestbook() {
 
       // no-cors mode returns an opaque response, so we just assume success if it didn't throw an error.
       setStatus("success");
+      if (onSuccess) onSuccess();
     } catch (error) {
       console.error(error);
       setStatus("error");
@@ -47,7 +49,10 @@ export default function Guestbook() {
           <p>Your message has been sent to Kerolos and Klara.</p>
         </div>
       ) : (
-        <form className="guestbook-form" onSubmit={handleSubmit}>
+        <form className={`guestbook-form ${shakeError ? 'shake' : ''}`} onSubmit={handleSubmit}>
+          {shakeError && (
+            <p className="form-error shake-text">Please leave us a message before you go! (Scroll again to skip)</p>
+          )}
           <div className="form-group">
             <label htmlFor="guestName">Your Name</label>
             <input

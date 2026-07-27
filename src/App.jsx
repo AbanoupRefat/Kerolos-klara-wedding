@@ -107,6 +107,22 @@ export default function App() {
   const touchStartX = useRef(0);
   const audioRef = useRef(null);
 
+  const [guestbookSubmitted, setGuestbookSubmitted] = useState(false);
+  const [skippedGuestbook, setSkippedGuestbook] = useState(false);
+  const [guestbookShakeError, setGuestbookShakeError] = useState(false);
+
+  const canAdvanceScreen = (targetScreen) => {
+    if (activeScreen === 5 && targetScreen === 6) {
+      if (!guestbookSubmitted && !skippedGuestbook) {
+        setGuestbookShakeError(true);
+        setSkippedGuestbook(true);
+        setTimeout(() => setGuestbookShakeError(false), 8000);
+        return false;
+      }
+    }
+    return true;
+  };
+
   const handleEnvelopeOpen = () => {
     if (audioRef.current) {
       const audio = audioRef.current;
@@ -149,6 +165,10 @@ export default function App() {
 
     if (e.deltaY > 15) {
       if (activeScreen < numScreens - 1) {
+        if (!canAdvanceScreen(activeScreen + 1)) {
+          setTimeout(() => isScrolling.current = false, 1000);
+          return;
+        }
         isScrolling.current = true;
         setActiveScreen(s => s + 1);
         setTimeout(() => isScrolling.current = false, 1000);
@@ -193,6 +213,7 @@ export default function App() {
       }
 
       if (diffY > 0 && activeScreen < numScreens - 1) {
+        if (!canAdvanceScreen(activeScreen + 1)) return;
         isScrolling.current = true;
         setActiveScreen(s => s + 1);
         setTimeout(() => isScrolling.current = false, 1000);
@@ -209,6 +230,7 @@ export default function App() {
       if (!invitationOpened || isScrolling.current) return;
       if (e.key === "ArrowDown" || e.key === "PageDown" || e.key === " ") {
         if (activeScreen < numScreens - 1) {
+          if (!canAdvanceScreen(activeScreen + 1)) return;
           isScrolling.current = true;
           setActiveScreen(s => s + 1);
           setTimeout(() => isScrolling.current = false, 1000);
@@ -315,7 +337,10 @@ export default function App() {
           <p className="section-intro">
             We would love to hear from you before our big day!
           </p>
-          <Guestbook />
+          <Guestbook 
+            shakeError={guestbookShakeError} 
+            onSuccess={() => setGuestbookSubmitted(true)} 
+          />
           <div className="scroll-indicator" aria-hidden="true">
             <FiChevronDown />
           </div>
