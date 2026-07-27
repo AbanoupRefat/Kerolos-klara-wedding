@@ -33,15 +33,15 @@ const WEDDING_DATE = new Date("2026-11-22T15:30:00");
 const CEREMONY = {
   eyebrow: "Wedding Ceremony",
   name: "Church of Archangel Michael in Sheraton",
-  time: "3:30 PM",
+  time: "4:00 PM",
   address: "كنيسة الملاك ميخائيل- بشيراتون",
   mapUrl: "https://maps.app.goo.gl/pbrzPqCjKhb3zL4y7?g_st=ic",
   event: {
     title: "Kerolos & Klara — Wedding Ceremony",
     description: "Join us as we exchange vows.",
     location: "كنيسة الملاك ميخائيل- بشيراتون",
-    start: new Date("2026-11-22T15:30:00"),
-    end: new Date("2026-11-22T17:00:00"),
+    start: new Date("2026-11-22T16:00:00"),
+    end: new Date("2026-11-22T17:30:00"),
   },
 };
 
@@ -61,12 +61,12 @@ const RECEPTION = {
 };
 
 const TIMELINE = [
-  { time: "2:45 PM", title: "Guests Arrive at Church", icon: LuUsers },
-  { time: "3:30 PM", title: "Wedding Ceremony", icon: GiChurch },
-  { time: "4:15 PM", title: "Rings & Vows Exchange", icon: GiRing },
-  { time: "4:45 PM", title: "Photos with Family & Friends", icon: LuCamera },
-  { time: "6:30 PM", title: "Guests Arrive at Hotel", icon: LuUsers },
-  { time: "7:00 PM", title: "Reception Begins", icon: PiChampagneBold },
+  { time: "3:30 PM", title: "Guests Arrive at Church", icon: LuUsers },
+  { time: "4:00 PM", title: "Wedding Ceremony", icon: GiChurch },
+  { time: "4:45 PM", title: "Rings & Vows Exchange", icon: GiRing },
+  { time: "5:30 PM", title: "Photos with Family & Friends", icon: LuCamera },
+  { time: "7:00 PM", title: "Guests Arrive at Hotel", icon: LuUsers },
+  { time: "7:30 PM", title: "Reception Begins", icon: PiChampagneBold },
   { time: "8:00 PM", title: "Dinner is Served", icon: LuUtensils },
   { time: "9:30 PM", title: "First Dance & Party", icon: LuMusic4 },
   { time: "11:00 PM", title: "Cake Cutting", icon: GiCakeSlice },
