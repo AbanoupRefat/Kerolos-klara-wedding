@@ -22,6 +22,10 @@ import BackgroundEffect from "./components/BackgroundEffect";
 import Guestbook from "./components/Guestbook";
 import "./App.css";
 
+import memory1 from "./assets/memory-1.jpeg";
+import memory2 from "./assets/memory-2.jpeg";
+import memory3 from "./assets/memory-3.jpeg";
+
 // ---- Editable wedding details -------------------------------------------
 const COUPLE = { bride: "Klara", groom: "Kerolos" };
 const WEDDING_DATE = new Date("2026-11-22T15:30:00");
@@ -71,15 +75,15 @@ const TIMELINE = [
 
 const MEMORIES = [
   {
-    src: "https://placehold.co/500x650/C77C9E/FBF2E8?text=Photo+1",
+    src: memory1,
     caption: "The day it all began",
   },
   {
-    src: "https://placehold.co/500x650/E7B7CC/4A2E3A?text=Photo+2",
+    src: memory2,
     caption: "Every laugh, every little moment",
   },
   {
-    src: "https://placehold.co/500x650/4A2E3A/FBF2E8?text=Photo+3",
+    src: memory3,
     caption: "Building a life together",
   },
 ];
